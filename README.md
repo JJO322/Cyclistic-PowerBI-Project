@@ -23,28 +23,14 @@ The dataset used for this project spans from April 2023 to April 2024 and includ
 - **Notebook Environment**: Jupyter Notebook.
 
 ### Key Steps:
-1. **Loading Data**: The raw data was imported from multiple CSV files covering different months.
+1. **Loading Data**: The raw data was imported from multiple CSV files covering different months from here: https://divvy-tripdata.s3.amazonaws.com/index.html
+  
 
-2. From here: https://divvy-tripdata.s3.amazonaws.com/index.html
-   
-   ![Loading Data](images/loading_data.png)
-
-3. **Handling Missing Values**: Missing data points were identified and handled using appropriate methods like imputation or removal.
-
-   ![Handling Missing Values](images/handling_missing_values.png)
-
-4. **Data Transformation**:
+2. **Data Transformation**:
     - **Datetime Conversion**: Converted `started_at` and `ended_at` columns to datetime objects for time-based analysis.
     - **Creating New Columns**: Added new columns like `ride_length` (in minutes) and `month` to enable detailed analysis.
     - **Season Classification**: Created a `season` column to categorize rides by Winter, Spring, Summer, and Fall.
     
-    ![Datetime Conversion](images/datetime_conversion.png)
-    ![Creating New Columns](images/creating_new_columns.png)
-    ![Season Classification](images/season_classification.png)
-
-5. **Data Filtering**: Filtered out inconsistent data points, such as rides with negative duration, to ensure accuracy.
-
-   ![Data Filtering](images/data_filtering.png)
 
 ## Jupyter Notebook
 The full Python code for data cleaning and preprocessing is available in the `Proyect.ipynb` file.
