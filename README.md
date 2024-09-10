@@ -24,3 +24,17 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+
+## Data Preprocessing
+
+We load and concatenate monthly datasets from April 2023 to April 2024. These CSV files contain usage data for the bike-share service. The data is cleaned and merged for further analysis.
+
+### Loading Monthly Data
+
+We define a function to load monthly data.
+
+```python
+def load_monthly_data(month):
+    filename = f"{month}.csv"
+    data = pd.read_csv(filename)
+    return data
