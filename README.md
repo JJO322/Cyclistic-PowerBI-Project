@@ -40,3 +40,38 @@ def load_monthly_data(month):
     filename = f"{month}.csv"
     data = pd.read_csv(filename)
     return data
+```
+## Concatenating All Months
+
+The data from each month is concatenated into a single DataFrame to create a full-year dataset.
+
+files = ['2023_04.csv', '2023_05.csv', ..., '2024_04.csv']
+dataframes = []
+
+for file in files:
+    df = pd.read_csv(file)
+    dataframes.append(df)
+
+CyclYearData = pd.concat(dataframes, ignore_index=True)
+CyclYearData.to_csv('CyclYearData.csv', index=False)
+```
+
+## Adding 'Month' and 'Season' Columns
+
+To analyze seasonal trends, we create new columns to categorize data by month and season.
+
+CyclYearData['month'] = CyclYearData['started_at'].dt.month
+
+def get_season(month):
+    if month in [1, 2, 3]:
+        return 'Winter'
+    elif month in [4, 5, 6]:
+        return 'Spring'
+    elif month in [7, 8, 9]:
+        return 'Summer'
+    else:
+        return 'Fall'
+
+CyclYearData['season'] = CyclYearData['month'].apply(get_season)
+
+```
