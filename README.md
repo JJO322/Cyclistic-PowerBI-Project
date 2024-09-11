@@ -75,3 +75,58 @@ def get_season(month):
 CyclYearData['season'] = CyclYearData['month'].apply(get_season)
 
 ```
+
+## Adding 'Month' and 'Season' Columns
+
+To analyze seasonal trends, we create new columns to categorize data by month and season.
+
+```
+CyclYearData['month'] = CyclYearData['started_at'].dt.month
+
+def get_season(month):
+    if month in [1, 2, 3]:
+        return 'Winter'
+    elif month in [4, 5, 6]:
+        return 'Spring'
+    elif month in [7, 8, 9]:
+        return 'Summer'
+    else:
+        return 'Fall'
+
+CyclYearData['season'] = CyclYearData['month'].apply(get_season)
+
+```
+
+## Visualizations
+
+Several visualizations were generated to explore bike usage trends by membership type, season, and other factors.
+
+## Average Ride Length by User Type
+
+We calculate the average ride length for both casual riders and members.
+
+```
+ride_length_means = CyclYearData.groupby('member_casual')['ride_length'].mean()
+ride_length_means.plot(kind='bar', figsize=(8, 6), title='Average Ride Length by User Type')
+plt.show()
+```
+
+## Number of Rides by Season
+
+To examine how the number of rides varies by season, we plot the number of rides taken in each season.
+
+```
+season_counts = CyclYearData['season'].value_counts()
+plt.figure(figsize=(8, 6))
+sns.barplot(x=season_counts.index, y=season_counts.values)
+plt.title('Number of Rides by Season')
+plt.show()
+
+```
+
+## Conclusions
+
+From this analysis, we observed that:
+- Members tend to take shorter rides but use the service more frequently.
+- Casual riders take longer rides, suggesting that they might use the service more for leisure than for commuting.
+- Summer has the highest number of rides, suggesting that promotional strategies could focus on this peak period to convert casual riders into members.
