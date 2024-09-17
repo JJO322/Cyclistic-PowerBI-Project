@@ -2,6 +2,9 @@
 
 This project aims to analyze the Cyclistic bike-share dataset to gain insights into user behavior and membership types. The analysis is performed in Python, and visualizations are generated to highlight key findings. Below is a summary of the steps taken and visual results.
 
+First we got the yearly data in monthly archives from this site: https://divvy-tripdata.s3.amazonaws.com/index.html 
+we downloaded the last 12 months and then used python to concatenate them into one.
+
 ## Table of Contents
 
 - [Project Overview](#project-overview)
